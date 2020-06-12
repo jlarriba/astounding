@@ -71,7 +71,7 @@ public class MainController {
     @FXML
     private void showContextMenu(ContextMenuEvent t) {
         ContextMenu cm = new ContextMenu();
-        MenuItem mi1 = new MenuItem("Download");
+        MenuItem mi1 = new MenuItem("Menu 1");
         cm.getItems().add(mi1);
         MenuItem mi2 = new MenuItem("Menu 2");
         cm.getItems().add(mi2);
@@ -86,7 +86,7 @@ public class MainController {
                 data.getItems().clear();
                 data.setItems(remarkable.loadEbooksByDirectory(rowData.getID()));
             } else {
-
+                remarkable.getApi().fetchDoc(rowData, "~/.config/astounding/");
             }
             System.out.println("Double Clicked on: " + rowData.getVissibleName());
         }

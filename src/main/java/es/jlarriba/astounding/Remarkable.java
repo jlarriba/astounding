@@ -78,4 +78,8 @@ public class Remarkable {
         }
         return FXCollections.observableList(docsByDir);
     }
+
+    public void fetchDoc(Document doc, String path) {
+
+    }
 }
