@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import org.kordamp.ikonli.javafx.*?>
+
+<VBox prefWidth="198.0"
+      style="-fx-background-color: #ffffff; -fx-background-radius:0; -fx-border-color:black; -fx-border-width: 1 1 1 1;">
+    <VBox prefWidth="198.0" style="-fx-background-color: #ffffff;">
+        <Label prefWidth="198.0" alignment="CENTER"/>
+        <Label prefWidth="198.0" alignment="CENTER"/>
+    </VBox>
+    <Label prefWidth="198.0" alignment="CENTER_RIGHT">
+        <graphic>
+            <FontIcon iconLiteral="mdi-dots-horizontal" iconSize="24" />
+        </graphic>
+    </Label>
+</VBox>

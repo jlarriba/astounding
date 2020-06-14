@@ -23,6 +23,8 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("main"), 800, 600);
+        stage.setResizable(false);
+        stage.setTitle("asTounding for reMarkable");
         stage.setScene(scene);
         stage.show();
     }

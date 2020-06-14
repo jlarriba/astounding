@@ -1,63 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.SeparatorMenuItem?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import org.kordamp.ikonli.javafx.*?>
 
-<VBox fx:id="root" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.jlarriba.astounding.MainController">
-  <children>
-    <MenuBar VBox.vgrow="NEVER">
-      <menus>
-        <Menu mnemonicParsing="false" text="File">
-          <items>
-            <MenuItem mnemonicParsing="false" text="Load Data" />
-            <MenuItem mnemonicParsing="false" text="Open…" />
-            <Menu mnemonicParsing="false" text="Open Recent" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Close" />
-            <MenuItem mnemonicParsing="false" text="Save" />
-            <MenuItem mnemonicParsing="false" text="Save As…" />
-            <MenuItem mnemonicParsing="false" text="Revert" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Preferences…" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Quit" />
-          </items>
-        </Menu>
-        <Menu mnemonicParsing="false" text="Edit">
-          <items>
-            <MenuItem mnemonicParsing="false" text="Undo" />
-            <MenuItem mnemonicParsing="false" text="Redo" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Cut" />
-            <MenuItem mnemonicParsing="false" text="Copy" />
-            <MenuItem mnemonicParsing="false" text="Paste" />
-            <MenuItem mnemonicParsing="false" text="Delete" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Select All" />
-            <MenuItem mnemonicParsing="false" text="Unselect All" />
-          </items>
-        </Menu>
-        <Menu mnemonicParsing="false" text="Help">
-          <items>
-            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
-          </items>
-        </Menu>
-      </menus>
-    </MenuBar>
-      <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="633.0" prefWidth="640.0">
-         <content>
-            <TableView fx:id="data" onContextMenuRequested="#showContextMenu" onMouseClicked="#doubleClick" prefHeight="369.0" prefWidth="999.0">
-              <columns>
-                <TableColumn fx:id="vissibleName" minWidth="0.0" prefWidth="637.0" text="Name" />
-              </columns>
-            </TableView>
-         </content>
-      </ScrollPane>
-  </children>
-</VBox>
+<ScrollPane fx:id="root" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="es.jlarriba.astounding.MainController">
+    <content>
+        <VBox>
+            <children>
+                <HBox alignment="CENTER_RIGHT" style="-fx-background-color: #ffffff; -fx-background-radius:0; -fx-border-color:black; -fx-border-width: 1 1 1 1;">
+                    <Button mnemonicParsing="false" style="-fx-background-color: #ffffff; -fx-background-radius:0;" onMouseClicked="#uploadDocument">
+                        <graphic>
+                            <FontIcon iconLiteral="mdi-upload" iconSize="24" />
+                        </graphic>
+                    </Button>
+                    <Button mnemonicParsing="false" style="-fx-background-color: #ffffff; -fx-background-radius:0;" onMouseClicked="#reload">
+                        <graphic>
+                            <FontIcon iconLiteral="mdi-reload" iconSize="24" />
+                        </graphic>
+                    </Button>
+                </HBox>
+                <FlowPane fx:id="collections" maxHeight="-Infinity" maxWidth="Infinity" minHeight="-Infinity"
+                          prefWidth="800.0"/>
+                <FlowPane fx:id="documents" maxHeight="-Infinity" maxWidth="Infinity" minHeight="-Infinity"
+                          prefWidth="800.0"/>
+            </children>
+        </VBox>
+    </content>
+</ScrollPane>

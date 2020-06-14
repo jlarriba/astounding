@@ -67,19 +67,35 @@ public class Remarkable {
     public void setDocs(List<Document> docs) {
         this.docs = docs;
     }
-    
-    public ObservableList<Document> loadEbooksByDirectory(String dirId) {
+
+    public Document getDocById(String id) {
+        for (var doc:this.getDocs()) {
+            if (doc.getID().equals(id)) {
+                return doc;
+            }
+        }
+        return null;
+    }
+
+    public List<Document> loadEbooksByDirectory(String dirId) {
         List<Document> docsByDir = new ArrayList<>();
         for (var doc:this.getDocs()) {
-            if (doc.getParent().equals(dirId)) {
+            if (doc.getParent().equals(dirId) && doc.getType().equals("DocumentType")) {
                 System.out.println("Adding doc to list " + doc.getVissibleName());
                 docsByDir.add(doc);
             }
         }
-        return FXCollections.observableList(docsByDir);
+        return docsByDir;
     }
 
-    public void fetchDoc(Document doc, String path) {
-
+    public List<Document> loadCollectionsByDirectory(String dirId) {
+        List<Document> collsByDir = new ArrayList<>();
+        for (var doc:this.getDocs()) {
+            if (doc.getType().equals("CollectionType") && doc.getParent().equals(dirId)) {
+                System.out.println("Adding doc to list " + doc.getVissibleName());
+                collsByDir.add(doc);
+            }
+        }
+        return collsByDir;
     }
 }
