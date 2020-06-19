@@ -8,9 +8,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-/**
- * JavaFX App
- */
 public class App extends Application {
 
     private static Scene scene;
@@ -22,8 +19,8 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("main"), 800, 600);
-        stage.setResizable(false);
+        scene = new Scene(loadFXML("main"), 805, 600);
+        scene.getStylesheets().add(this.getClass().getResource("style.css").toExternalForm());
         stage.setTitle("asTounding for reMarkable");
         stage.setScene(scene);
         stage.show();

@@ -1,17 +1,18 @@
 package es.jlarriba.astounding;
 
-import com.jfoenix.controls.JFXDialog;
-import com.jfoenix.controls.JFXScrollPane;
 import es.jlarriba.jrmapi.model.Document;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.ContextMenu;
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
-import javafx.stage.Modality;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.kordamp.ikonli.javafx.FontIcon;
 
 import java.io.File;
@@ -21,9 +22,7 @@ import java.util.List;
 public class MainController {
 
     private Remarkable remarkable;
-
-    @FXML
-    private ScrollPane root;
+    private static final Logger LOGGER = LogManager.getLogger();
 
     @FXML
     private FlowPane collections;
@@ -43,7 +42,6 @@ public class MainController {
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Documents", "*.pdf", "*.epub"));
         Button button = (Button) e.getSource();
         File selectedFile = fileChooser.showOpenDialog(button.getScene().getWindow());
-        System.out.println(selectedFile);
         String parentId = "";
         if (selectedFile != null) {
             remarkable.getApi().uploadDoc(selectedFile, parentId);
@@ -77,7 +75,6 @@ public class MainController {
                 fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("PDF files", "*.pdf"));
                 File selectedFile = fileChooser.showSaveDialog(button.getScene().getWindow());
                 fileChooser.setInitialFileName(doc.getVissibleName());
-                System.out.println(selectedFile);
                 if (selectedFile != null) {
                     remarkable.getApi().exportPdf(doc, selectedFile.getParent(), selectedFile.getName());
                 }
@@ -126,7 +123,7 @@ public class MainController {
             });
             return vbox;
         } catch (IOException e) {
-            System.out.println("Error reading FXML");
+            LOGGER.error("Error reading FXML", e);
         }
         return new VBox();
     }
@@ -154,7 +151,7 @@ public class MainController {
             });
             return vbox;
         } catch (IOException e) {
-            System.out.println("Error reading FXML");
+            LOGGER.error("Error reading FXML", e);
         }
         return new VBox();
     }
