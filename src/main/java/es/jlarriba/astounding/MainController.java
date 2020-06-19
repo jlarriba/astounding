@@ -117,10 +117,10 @@ public class MainController {
             button.setOnMouseClicked((e) -> {
                 buttonDoubleClick(e);
             });
-            Label label = (Label) vbox.getChildren().get(1);
+            /*Label label = (Label) vbox.getChildren().get(1);
             label.setOnMouseClicked((e) -> {
                 showContextMenu(e, label);
-            });
+            });*/
             return vbox;
         } catch (IOException e) {
             LOGGER.error("Error reading FXML", e);
