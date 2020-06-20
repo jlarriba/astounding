@@ -12,7 +12,7 @@
     </VBox>
     <Label prefWidth="198.0" alignment="CENTER_RIGHT">
         <graphic>
-            <FontIcon iconLiteral="mdi-dots-horizontal" iconSize="24" />
+            <FontIcon iconLiteral="mdi-delete" iconSize="24" />
         </graphic>
     </Label>
 </VBox>

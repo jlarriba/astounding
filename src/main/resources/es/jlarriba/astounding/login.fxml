@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import org.kordamp.ikonli.javafx.*?>
+
+<VBox fx:id="root" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="es.jlarriba.astounding.MainController">
+    <children>
+        <HBox alignment="CENTER_RIGHT" style="-fx-background-color: #ffffff; -fx-background-radius:0; -fx-border-color:black; -fx-border-width: 1 1 1 1;">
+            <Button mnemonicParsing="false" style="-fx-background-color: #ffffff; -fx-background-radius:0;" onMouseClicked="#uploadDocument">
+                <graphic>
+                    <FontIcon iconLiteral="mdi-upload" iconSize="24" />
+                </graphic>
+            </Button>
+            <Button mnemonicParsing="false" style="-fx-background-color: #ffffff; -fx-background-radius:0;" onMouseClicked="#reload">
+                <graphic>
+                    <FontIcon iconLiteral="mdi-reload" iconSize="24" />
+                </graphic>
+            </Button>
+        </HBox>
+        <ScrollPane hbarPolicy="NEVER" pannable="true" vbarPolicy="AS_NEEDED" fx:id="scroll">
+                <content>
+                    <VBox>
+                        <FlowPane fx:id="collections" maxHeight="-Infinity" maxWidth="Infinity" minHeight="-Infinity"
+                                  prefWidth="800.0"/>
+                        <FlowPane fx:id="documents" maxHeight="-Infinity" maxWidth="Infinity" minHeight="-Infinity"
+                                  prefWidth="800.0"/>
+                    </VBox>
+                </content>
+        </ScrollPane>
+    </children>
+</VBox>

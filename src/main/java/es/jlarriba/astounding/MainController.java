@@ -3,6 +3,7 @@ package es.jlarriba.astounding;
 import es.jlarriba.jrmapi.model.Document;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
@@ -47,15 +48,20 @@ public class MainController {
             remarkable.getApi().uploadDoc(selectedFile, parentId);
             collections.getChildren().clear();
             documents.getChildren().clear();
-            renderScreen(parentId);
+            reload(parentId);
         }
     }
 
     @FXML
     private void reload() {
+        reload("");
+    }
+
+    private void reload(String parentId) {
+        remarkable.init();
         collections.getChildren().clear();
         documents.getChildren().clear();
-        renderScreen("");
+        renderScreen(parentId);
     }
 
     private void buttonDoubleClick(MouseEvent e) {
@@ -117,8 +123,11 @@ public class MainController {
             button.setOnMouseClicked((e) -> {
                 buttonDoubleClick(e);
             });
-            /*Label label = (Label) vbox.getChildren().get(1);
-            label.setOnMouseClicked((e) -> {
+            Label label = (Label) vbox.getChildren().get(1);
+            label.getGraphic().setOnMouseClicked((e) -> {
+                delete(e);
+            });
+            /*label.setOnMouseClicked((e) -> {
                 showContextMenu(e, label);
             });*/
             return vbox;
@@ -146,7 +155,7 @@ public class MainController {
                 renderScreen(remarkable.getDocById(dirId).getParent());
             });
             Label label = (Label) vbox.getChildren().get(1);
-            label.setOnMouseClicked((e) -> {
+            label.getGraphic().setOnMouseClicked((e) -> {
                 showContextMenu(e, label);
             });
             return vbox;
@@ -154,6 +163,16 @@ public class MainController {
             LOGGER.error("Error reading FXML", e);
         }
         return new VBox();
+    }
+
+    private void delete(MouseEvent e) {
+        Node graphic = (Node) e.getSource();
+        String docId = graphic.getParent().getParent().getId();
+
+        Document doc = remarkable.getDocById(docId);
+        remarkable.getApi().deleteEntry(doc);
+        reload(doc.getParent());
+        LOGGER.debug("Deleted document " + doc.getVissibleName());
     }
 
     private void showContextMenu(MouseEvent e, Label label) {
