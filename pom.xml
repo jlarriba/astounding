@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>es.jlarriba</groupId>
     <artifactId>astounding</artifactId>
-    <version>0.2-SNAPSHOT</version>
+    <version>0.2</version>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>11</maven.compiler.source>
@@ -21,14 +21,9 @@
             <version>11.0.2</version>
         </dependency>
         <dependency>
-            <groupId>com.github.almasb</groupId>
-            <artifactId>fxgl</artifactId>
-            <version>11.9</version>
-        </dependency>
-        <dependency>
             <groupId>es.jlarriba</groupId>
             <artifactId>jrmapi</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>0.5</version>
         </dependency>
         <dependency>
             <groupId>org.kordamp.ikonli</groupId>
@@ -50,6 +45,12 @@
             <artifactId>log4j-core</artifactId>
             <version>2.11.2</version>
         </dependency>
+        <dependency>
+            <groupId>org.graalvm.sdk</groupId>
+            <artifactId>graal-sdk</artifactId>
+            <version>20.1.0</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -67,8 +68,30 @@
                 <version>0.0.4</version>
                 <configuration>
                     <mainClass>es.jlarriba.astounding.App</mainClass>
+                    <launcher>astounding</launcher>
                 </configuration>
             </plugin>
+            <!--<plugin>
+                <groupId>org.graalvm.nativeimage</groupId>
+                <artifactId>native-image-maven-plugin</artifactId>
+                <version>20.1.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>native-image</goal>
+                        </goals>
+                        <phase>package</phase>
+                    </execution>
+                </executions>
+                <configuration>
+                    <skip>false</skip>
+                    <imageName>astounding</imageName>
+                    <mainClass>es.jlarriba.astounding.App</mainClass>
+                    <buildArgs>
+                        -no-fallback
+                    </buildArgs>
+                </configuration>
+            </plugin>-->
             <plugin>
                 <groupId>com.gluonhq</groupId>
                 <artifactId>client-maven-plugin</artifactId>
@@ -78,9 +101,17 @@
                         <list>src/main/resources/es/jlarriba/astounding</list>
                     </bundlesList>-->
                     <reflectionList>
-                        <list>es.jlarriba.astounding.MainController</list>
+                       <!-- <list>com.sun.javafx.util.Utils</list>
+                        <list>com.sun.javafx.application.LauncherImpl</list>
+                        <list>com.sun.javafx.application.PlatformImpl</list>
+                        <list>com.sun.javafx.tk.Toolkit</list>
+                        <list>javafx.application.Application</list>
+                        <list>com.sun.javafx.util.ModuleHelper</list>-->
+                        <list>es.jlarriba.astounding.App</list>
+                        <list>javafx.fxml.FXMLLoader</list>
+                        <list>com.sun.javafx.tk.Toolkit</list>
                     </reflectionList>
-                    <mainClass>es.jlarriba.astounding.App</mainClass>
+                    <mainClass>es.jlarriba.astounding.Launcher</mainClass>
                     <graalvmHome>/opt/graalvm</graalvmHome>
                 </configuration>
             </plugin>
