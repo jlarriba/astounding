@@ -28,3 +28,10 @@ If the fatjar wants to be build, use the fatJar profile while building:
 $ mvn clean package -PfatJar
 ```
 
+# disclaimer
+The project is provided as-is, without warranty or support.
+
+The author(s) and contributor(s) are not associated with reMarkable AS, Norway. reMarkable is a registered trademark of reMarkable AS in some countries. Please see https://remarkable.com for their product.
+
+
+
