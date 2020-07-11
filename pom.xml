@@ -23,7 +23,7 @@
         <dependency>
             <groupId>es.jlarriba</groupId>
             <artifactId>jrmapi</artifactId>
-            <version>0.5</version>
+            <version>0.6</version>
         </dependency>
         <dependency>
             <groupId>org.kordamp.ikonli</groupId>
