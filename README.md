@@ -10,7 +10,7 @@ Java 11 is required to be installed. OpenJDK11 will do fine.
 
 The authentication is not yet implemented, but it uses [jrmapi](https://github.com/jlarriba/jrmapi) to communicate with the reMarkable cloud, which is compatible with the .rmapi file created by the [rmapi](https://github.com/juruen/rmapi) project. If you are already using it, you dont have to do anything. If not, download it and use its login. That will generate a .rmapi in you userdir with the corresponding tokens. They will be used by astounding to connect to your reMarkable cloud.
 
-### jrmapi
+### rmapi
 Download the last release from the [Github relases page](https://github.com/juruen/rmapi/releases).
 ```
 $ tar -zxvf rmapi-linuxx86-64.tar.gz
